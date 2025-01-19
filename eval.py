@@ -28,12 +28,13 @@ Arguments loading
 parser = ArgumentParser()
 parser.add_argument('--model', default='./saves/XMem.pth')
 
+baseDir = '/bigtemp/rgq5aw/xmemDatasets'
 # Data options
-parser.add_argument('--d16_path', default='../DAVIS/2016')
-parser.add_argument('--d17_path', default='../DAVIS/2017')
-parser.add_argument('--y18_path', default='../YouTube2018')
-parser.add_argument('--y19_path', default='../YouTube')
-parser.add_argument('--lv_path', default='../long_video_set')
+parser.add_argument('--d16_path', default= baseDir + '/DAVIS/2016')
+parser.add_argument('--d17_path', default= baseDir + '/DAVIS/2017')
+parser.add_argument('--y18_path', default= baseDir + '/YouTube2018')
+parser.add_argument('--y19_path', default= baseDir + '/YouTube')
+parser.add_argument('--lv_path', default= baseDir + '/long_video_set')
 # For generic (G) evaluation, point to a folder that contains "JPEGImages" and "Annotations"
 parser.add_argument('--generic_path')
 
@@ -68,7 +69,7 @@ config = vars(args)
 config['enable_long_term'] = not config['disable_long_term']
 
 if args.output is None:
-    args.output = f'../output/{args.dataset}_{args.split}'
+    args.output = f'output/{args.dataset}_{args.split}'
     print(f'Output path not provided. Defaulting to {args.output}')
 
 """
