@@ -144,6 +144,7 @@ else:
 
 total_process_time = 0
 total_frames = 0
+total_memory_time = 0
 
 # Start eval
 for vid_reader in progressbar(meta_loader, max_value=len(meta_dataset), redirect_stdout=True):
@@ -242,12 +243,13 @@ for vid_reader in progressbar(meta_loader, max_value=len(meta_dataset), redirect
                     hkl.dump(mapper.remappings, path.join(np_path, f'backward.hkl'), mode='w')
                 if args.save_all or info['save'][0]:
                     hkl.dump(prob, path.join(np_path, f'{frame[:-4]}.hkl'), mode='w', compression='lzf')
-
+    total_memory_time += processor.get_memory_timing()
 
 print(f'Total processing time: {total_process_time}')
 print(f'Total processed frames: {total_frames}')
 print(f'FPS: {total_frames / total_process_time}')
 print(f'Max allocated memory (MB): {torch.cuda.max_memory_allocated() / (2**20)}')
+print(f"Total accumulated memory timing: {total_memory_time:.4f} seconds.")
 
 if not args.save_scores:
     if is_youtube:

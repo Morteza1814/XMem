@@ -19,6 +19,9 @@ class InferenceCore:
         self.clear_memory()
         self.all_labels = None
 
+    def get_memory_timing(self):
+        return self.memory.get_accumulated_time()
+
     def clear_memory(self):
         self.curr_ti = -1
         self.last_mem_ti = 0

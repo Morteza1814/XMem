@@ -1,11 +1,12 @@
+import time
 import torch
 import warnings
 
 from inference.kv_memory_store import KeyValueMemoryStore
 from model.memory_util import *
 
-
 class MemoryManager:
+
     """
     Manages all three memory stores and the transition between working/long-term memory
     """
@@ -34,6 +35,22 @@ class MemoryManager:
             self.long_mem = KeyValueMemoryStore(count_usage=self.enable_long_term_usage)
 
         self.reset_config = True
+        self.accumulated_time = 0
+
+    def get_accumulated_time(self):
+        return self.accumulated_time
+
+    @staticmethod
+    def timing_decorator(func):
+        def wrapper(self, *args, **kwargs):
+            start = time.perf_counter()
+            result = func(self, *args, **kwargs)  # Forward all arguments correctly
+            end = time.perf_counter()
+            exec_time = end - start
+            self.accumulated_time += exec_time
+            # print(f"Function '{func.__name__}' executed in {exec_time:.4f} seconds.")
+            return result
+        return wrapper
 
     def update_config(self, config):
         self.reset_config = True
@@ -54,6 +71,7 @@ class MemoryManager:
         # this function is for a single object group
         return v @ affinity
 
+    @timing_decorator
     def match_memory(self, query_key, selection):
         # query_key: B x C^k x H x W
         # selection:  B x C^k x H x W
@@ -148,7 +166,8 @@ class MemoryManager:
         ], 0)
 
         return all_readout_mem.view(all_readout_mem.shape[0], self.CV, h, w)
-
+    
+    @timing_decorator
     def add_memory(self, key, shrinkage, value, objects, selection=None):
         # key: 1*C*H*W
         # value: 1*num_objects*C*H*W
@@ -188,7 +207,6 @@ class MemoryManager:
                     
                 self.compress_features()
 
-
     def create_hidden_state(self, n, sample_key):
         # n is the TOTAL number of objects
         h, w = sample_key.shape[-2:]
@@ -207,7 +225,7 @@ class MemoryManager:
 
     def get_hidden(self):
         return self.hidden
-
+    
     def compress_features(self):
         HW = self.HW
         candidate_value = []

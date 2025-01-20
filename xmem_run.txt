@@ -1,47 +1,44 @@
 /u/rgq5aw/GIT/XMem/model/network.py:145: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
   model_weights = torch.load(model_path, map_location=map_location)
-Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to /u/rgq5aw/.cache/torch/hub/checkpoints/resnet50-19c8e357.pth
-Hyperparameters read from the model weights: C^k=64, C^v=512, C^h=64
-Single object mode: False
-  0%|          | 0.00/97.8M [00:00<?, ?B/s] 10%|█         | 10.1M/97.8M [00:00<00:00, 104MB/s] 22%|██▏       | 21.5M/97.8M [00:00<00:00, 113MB/s] 34%|███▎      | 32.8M/97.8M [00:00<00:00, 115MB/s] 45%|████▌     | 44.0M/97.8M [00:00<00:00, 116MB/s] 56%|█████▋    | 55.1M/97.8M [00:00<00:00, 116MB/s] 68%|██████▊   | 66.5M/97.8M [00:00<00:00, 117MB/s] 80%|███████▉  | 77.8M/97.8M [00:00<00:00, 117MB/s] 91%|█████████ | 89.0M/97.8M [00:00<00:00, 116MB/s]100%|██████████| 97.8M/97.8M [00:00<00:00, 116MB/s]
-Downloading: "https://download.pytorch.org/models/resnet18-5c106cde.pth" to /u/rgq5aw/.cache/torch/hub/checkpoints/resnet18-5c106cde.pth
-  0%|          | 0.00/44.7M [00:00<?, ?B/s] 24%|██▎       | 10.5M/44.7M [00:00<00:00, 109MB/s] 49%|████▊     | 21.8M/44.7M [00:00<00:00, 114MB/s] 74%|███████▍  | 33.0M/44.7M [00:00<00:00, 116MB/s] 99%|█████████▉| 44.1M/44.7M [00:00<00:00, 116MB/s]100%|██████████| 44.7M/44.7M [00:00<00:00, 115MB/s]
 /u/rgq5aw/GIT/XMem/eval.py:140: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
   model_weights = torch.load(args.model)
+Hyperparameters read from the model weights: C^k=64, C^v=512, C^h=64
+Single object mode: False
   0% (0 of 30) |                         | Elapsed Time: 0:00:00 ETA:  --:--:--
-/u/rgq5aw/GIT/XMem/eval.py:168: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+/u/rgq5aw/GIT/XMem/eval.py:169: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
   with torch.cuda.amp.autocast(enabled=not args.benchmark):
-  3% (1 of 30) |                         | Elapsed Time: 0:00:12 ETA:   0:06:10
-  6% (2 of 30) |#                        | Elapsed Time: 0:00:15 ETA:   0:03:43
- 10% (3 of 30) |##                       | Elapsed Time: 0:00:20 ETA:   0:03:04
- 13% (4 of 30) |###                      | Elapsed Time: 0:00:24 ETA:   0:02:37
- 16% (5 of 30) |####                     | Elapsed Time: 0:00:28 ETA:   0:02:23
- 20% (6 of 30) |#####                    | Elapsed Time: 0:00:32 ETA:   0:02:09
- 23% (7 of 30) |#####                    | Elapsed Time: 0:00:34 ETA:   0:01:53
- 26% (8 of 30) |######                   | Elapsed Time: 0:00:40 ETA:   0:01:50
- 30% (9 of 30) |#######                  | Elapsed Time: 0:00:44 ETA:   0:01:43
- 33% (10 of 30) |########                | Elapsed Time: 0:00:47 ETA:   0:01:35
- 36% (11 of 30) |########                | Elapsed Time: 0:00:51 ETA:   0:01:29
- 40% (12 of 30) |#########               | Elapsed Time: 0:00:54 ETA:   0:01:21
- 43% (13 of 30) |##########              | Elapsed Time: 0:00:57 ETA:   0:01:14
- 46% (14 of 30) |###########             | Elapsed Time: 0:01:01 ETA:   0:01:10
- 50% (15 of 30) |############            | Elapsed Time: 0:01:07 ETA:   0:01:07
- 53% (16 of 30) |############            | Elapsed Time: 0:01:10 ETA:   0:01:01
- 56% (17 of 30) |#############           | Elapsed Time: 0:01:15 ETA:   0:00:57
- 60% (18 of 30) |##############          | Elapsed Time: 0:01:17 ETA:   0:00:51
- 63% (19 of 30) |###############         | Elapsed Time: 0:01:21 ETA:   0:00:47
- 66% (20 of 30) |################        | Elapsed Time: 0:01:25 ETA:   0:00:42
- 70% (21 of 30) |################        | Elapsed Time: 0:01:27 ETA:   0:00:37
- 73% (22 of 30) |#################       | Elapsed Time: 0:01:30 ETA:   0:00:33
- 76% (23 of 30) |##################      | Elapsed Time: 0:01:35 ETA:   0:00:28
- 80% (24 of 30) |###################     | Elapsed Time: 0:01:37 ETA:   0:00:24
- 83% (25 of 30) |####################    | Elapsed Time: 0:01:42 ETA:   0:00:20
- 86% (26 of 30) |####################    | Elapsed Time: 0:01:47 ETA:   0:00:16
- 90% (27 of 30) |#####################   | Elapsed Time: 0:01:52 ETA:   0:00:12
- 93% (28 of 30) |######################  | Elapsed Time: 0:01:55 ETA:   0:00:08
- 96% (29 of 30) |####################### | Elapsed Time: 0:01:58 ETA:   0:00:04
-100% (30 of 30) |########################| Elapsed Time: 0:02:04 Time:  0:02:04
-Total processing time: 78.6280914554596
+  3% (1 of 30) |                         | Elapsed Time: 0:00:05 ETA:   0:02:26
+  6% (2 of 30) |#                        | Elapsed Time: 0:00:06 ETA:   0:01:37
+ 10% (3 of 30) |##                       | Elapsed Time: 0:00:09 ETA:   0:01:26
+ 13% (4 of 30) |###                      | Elapsed Time: 0:00:12 ETA:   0:01:18
+ 16% (5 of 30) |####                     | Elapsed Time: 0:00:14 ETA:   0:01:14
+ 20% (6 of 30) |#####                    | Elapsed Time: 0:00:17 ETA:   0:01:08
+ 23% (7 of 30) |#####                    | Elapsed Time: 0:00:18 ETA:   0:01:01
+ 26% (8 of 30) |######                   | Elapsed Time: 0:00:21 ETA:   0:00:59
+ 30% (9 of 30) |#######                  | Elapsed Time: 0:00:24 ETA:   0:00:57
+ 33% (10 of 30) |########                | Elapsed Time: 0:00:26 ETA:   0:00:52
+ 36% (11 of 30) |########                | Elapsed Time: 0:00:28 ETA:   0:00:49
+ 40% (12 of 30) |#########               | Elapsed Time: 0:00:30 ETA:   0:00:45
+ 43% (13 of 30) |##########              | Elapsed Time: 0:00:32 ETA:   0:00:42
+ 46% (14 of 30) |###########             | Elapsed Time: 0:00:34 ETA:   0:00:39
+ 50% (15 of 30) |############            | Elapsed Time: 0:00:38 ETA:   0:00:38
+ 53% (16 of 30) |############            | Elapsed Time: 0:00:40 ETA:   0:00:35
+ 56% (17 of 30) |#############           | Elapsed Time: 0:00:43 ETA:   0:00:33
+ 60% (18 of 30) |##############          | Elapsed Time: 0:00:44 ETA:   0:00:29
+ 63% (19 of 30) |###############         | Elapsed Time: 0:00:46 ETA:   0:00:27
+ 66% (20 of 30) |################        | Elapsed Time: 0:00:49 ETA:   0:00:24
+ 70% (21 of 30) |################        | Elapsed Time: 0:00:51 ETA:   0:00:21
+ 73% (22 of 30) |#################       | Elapsed Time: 0:00:53 ETA:   0:00:19
+ 76% (23 of 30) |##################      | Elapsed Time: 0:00:55 ETA:   0:00:17
+ 80% (24 of 30) |###################     | Elapsed Time: 0:00:57 ETA:   0:00:14
+ 83% (25 of 30) |####################    | Elapsed Time: 0:01:00 ETA:   0:00:12
+ 86% (26 of 30) |####################    | Elapsed Time: 0:01:03 ETA:   0:00:09
+ 90% (27 of 30) |#####################   | Elapsed Time: 0:01:06 ETA:   0:00:07
+ 93% (28 of 30) |######################  | Elapsed Time: 0:01:08 ETA:   0:00:04
+ 96% (29 of 30) |####################### | Elapsed Time: 0:01:10 ETA:   0:00:02
+100% (30 of 30) |########################| Elapsed Time: 0:01:13 Time:  0:01:13
+Total processing time: 32.3235780534744
 Total processed frames: 1999
-FPS: 25.423483681177384
-Max allocated memory (MB): 1234.2138671875
+FPS: 61.84340102116669
+Max allocated memory (MB): 1235.716796875
+Total accumulated memory timing: 2.7799 seconds.
